@@ -1,24 +1,32 @@
 <template>
   <div class="hello">
-    <button-counter></button-counter>
+    <base-input label='姓  名' v-model='name' @blur="blur"></base-input>
+    <base-input label='密  码' v-model='password' @blur="blur"></base-input>
   </div>
 </template>
 
 <script scoped>
-require('./asu-ui.js')
+require("./asu-ui.js");
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "hello",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      name: "",
+      password:""
+    };
+  },
+  methods: {
+    blur() {
+      console.log(this.msg)
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {

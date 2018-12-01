@@ -1,11 +1,28 @@
 'use strict'
 import Vue from 'vue'
-Vue.component('button-counter', {
-    data: function () {
+Vue.component('base-input', {
+  inheritAttrs: false,
+  data(){
       return {
-        count: 0
-      }
-    },
-    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-  })
-export default {}
+        
+    }
+  },
+  props: ['label', 'value'],
+  methods:{
+    blur(event){
+      var vm = this
+      vm.$emit('blur')
+  }
+  },
+  template: `
+    <label>
+      {{ label }}
+      <input
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
+        @blur='blur'
+      >
+    </label>
+  `
+})
